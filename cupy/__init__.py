@@ -1373,6 +1373,7 @@ clip = math.misc.clip
 sqrt = math.misc.sqrt
 square = math.misc.square
 absolute = math.misc.absolute
+abs = math.misc.absolute
 sign = math.misc.sign
 maximum = math.misc.maximum
 minimum = math.misc.minimum
@@ -1382,8 +1383,11 @@ fmin = math.misc.fmin
 # -----------------------------------------------------------------------------
 # Sorting, searching, and counting
 # -----------------------------------------------------------------------------
+count_nonzero = sorting.count.count_nonzero
+
 argmax = sorting.search.argmax
 argmin = sorting.search.argmin
+where = sorting.search.where
 
 # -----------------------------------------------------------------------------
 # Statistics
