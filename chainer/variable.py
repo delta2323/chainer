@@ -164,6 +164,15 @@ class VariableNode(object):
         vdata = variable.data
         self._set_data_type(vdata)
 
+
+        if self.shape is None:
+            self.label = ''
+        elif self.shape == ():
+            self.label = str(self.dtype)
+        else:
+            self.label = '(%s), %s' % (', '.join(map(str, self.shape)),
+                                       str(self.dtype))
+
     @property
     def creator(self):
         """Function object that created this variable node.
@@ -274,10 +283,11 @@ class VariableNode(object):
     @property
     def label(self):
         """Short text that represents the variable node."""
-        if self.shape == ():
-            return str(self.dtype)
-        return '(%s), %s' % (', '.join(map(str, self.shape)),
-                             str(self.dtype))
+        return self._label
+
+    @label.setter
+    def label(self, val):
+        self._label = val
 
     @property
     def rank(self):
@@ -529,6 +539,10 @@ Actual: {0}'''.format(type(data))
     def label(self):
         """Short text that represents the variable."""
         return self._node.label
+
+    @label.setter
+    def label(self, val):
+        self._node.label = val
 
     @property
     def creator(self):
